@@ -1,10 +1,57 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Link } from 'react-router-dom';
+import { useToast } from '@/hooks/use-toast';
+import { Loader2 } from 'lucide-react';
 
 const CTA = () => {
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Simple email validation
+    if (!email || !email.includes('@')) {
+      toast({
+        title: "Invalid email",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    try {
+      // In a real app, this would be an actual API request
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      toast({
+        title: "Success!",
+        description: "Thank you for joining our early access list. We'll be in touch soon!",
+      });
+      
+      setEmail('');
+    } catch (error) {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="py-20 bg-primary/5 border-t border-border">
       <div className="container px-4 md:px-6">
@@ -15,14 +62,30 @@ const CTA = () => {
           </p>
         </div>
         
-        <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-6">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-6">
           <Input 
             type="email" 
             placeholder="Enter your email" 
             className="flex-1"
+            value={email}
+            onChange={handleEmailChange}
+            disabled={isSubmitting}
+            required
           />
-          <Button type="submit">Get Early Access</Button>
-        </div>
+          <Button 
+            type="submit" 
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Submitting...
+              </>
+            ) : (
+              "Get Early Access"
+            )}
+          </Button>
+        </form>
         
         <div className="text-center mt-4">
           <Link to="/dashboard">
