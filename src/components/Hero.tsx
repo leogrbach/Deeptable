@@ -1,9 +1,59 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Loader2 } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
 
 const Hero = () => {
+  const [open, setOpen] = useState(false);
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Simple email validation
+    if (!email || !email.includes('@')) {
+      toast({
+        title: "Invalid email",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    try {
+      // In a real app, this would be an actual API request
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      toast({
+        title: "Success!",
+        description: "Thank you for joining our early access list. We'll be in touch soon!",
+      });
+      
+      setEmail('');
+      setOpen(false);
+    } catch (error) {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="py-20 md:py-28">
       <div className="container px-4 md:px-6">
@@ -18,7 +68,7 @@ const Hero = () => {
           </div>
           
           <div className="flex flex-col sm:flex-row items-center gap-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <Button size="lg" className="w-full sm:w-auto">
+            <Button size="lg" className="w-full sm:w-auto" onClick={() => setOpen(true)}>
               Get Early Access <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button size="lg" variant="outline" className="w-full sm:w-auto">
@@ -64,6 +114,50 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      {/* Email signup dialog */}
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Get Early Access</DialogTitle>
+            <DialogDescription>
+              Join our early access program and be among the first to experience the power of DeepTable.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleSubmit}>
+            <div className="py-4">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full"
+                value={email}
+                onChange={handleEmailChange}
+                disabled={isSubmitting}
+                required
+              />
+            </div>
+            <DialogFooter>
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  "Get Early Access"
+                )}
+              </Button>
+            </DialogFooter>
+          </form>
+          <p className="text-xs text-center text-muted-foreground mt-2">
+            By signing up, you agree to our Terms of Service and Privacy Policy.
+          </p>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
