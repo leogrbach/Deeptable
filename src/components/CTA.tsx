@@ -10,7 +10,7 @@ const CTA = () => {
         <div className="flex flex-col items-center text-center space-y-4 mb-8">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">Ready to Transform Your Workflow?</h2>
           <p className="text-muted-foreground max-w-[600px]">
-            Join our early access program and be among the first to experience the power of AirExcel.
+            Join our early access program and be among the first to experience the power of DeepTable.
           </p>
         </div>
         

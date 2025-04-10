@@ -38,7 +38,7 @@ const Hero = () => {
             <div className="p-4">
               <img 
                 src="https://s.lovable.ch/OWEydXdqTkdjdFBnQkRJaHdHOWJTRkpMUFZPSDFqMW52TVk3anJZcExOWT0="
-                alt="AirExcel interface mockup" 
+                alt="DeepTable interface mockup" 
                 className="w-full h-auto rounded border border-border"
               />
             </div>

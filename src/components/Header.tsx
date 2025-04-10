@@ -12,7 +12,7 @@ const Header = () => {
             <rect width="32" height="32" rx="8" fill="hsl(var(--primary))" />
             <path d="M8 11H24M8 16H24M8 21H16" stroke="white" strokeWidth="2" strokeLinecap="round" />
           </svg>
-          <span className="font-bold text-xl">AirExcel</span>
+          <span className="font-bold text-xl">DeepTable</span>
         </div>
         
         <nav className="hidden md:flex items-center gap-6">

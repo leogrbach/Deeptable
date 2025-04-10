@@ -13,7 +13,7 @@ const Footer = () => {
                 <rect width="32" height="32" rx="8" fill="hsl(var(--primary))" />
                 <path d="M8 11H24M8 16H24M8 21H16" stroke="white" strokeWidth="2" strokeLinecap="round" />
               </svg>
-              <span className="font-bold text-lg">AirExcel</span>
+              <span className="font-bold text-lg">DeepTable</span>
             </div>
             <p className="text-sm text-muted-foreground">
               Bridging the gap between Airtable and Excel for seamless data workflows.
@@ -54,7 +54,7 @@ const Footer = () => {
         
         <div className="flex flex-col sm:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">
-            © 2023 AirExcel. All rights reserved.
+            © 2023 DeepTable. All rights reserved.
           </p>
           
           <div className="flex space-x-4 mt-4 sm:mt-0">

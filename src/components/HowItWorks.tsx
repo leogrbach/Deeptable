@@ -7,7 +7,7 @@ const HowItWorks = () => {
     {
       number: "01",
       title: "Install the Extension",
-      description: "Add AirExcel directly to your Airtable workspace from the Airtable marketplace with just a few clicks."
+      description: "Add DeepTable directly to your Airtable workspace from the Airtable marketplace with just a few clicks."
     },
     {
       number: "02",
@@ -32,7 +32,7 @@ const HowItWorks = () => {
         <div className="flex flex-col items-center text-center space-y-4 mb-12">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">How It Works</h2>
           <p className="text-muted-foreground max-w-[600px]">
-            Getting started with AirExcel is simple. Follow these steps to transform your Airtable data.
+            Getting started with DeepTable is simple. Follow these steps to transform your Airtable data.
           </p>
         </div>
         
