@@ -24,7 +24,9 @@ const Header = () => {
         
         <div className="flex items-center gap-3">
           <Button variant="outline" className="hidden sm:flex">Log In</Button>
-          <Button>Get Early Access</Button>
+          <Link to="/dashboard">
+            <Button>Try Dashboard</Button>
+          </Link>
         </div>
       </div>
     </header>

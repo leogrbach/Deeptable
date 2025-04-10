@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Link } from 'react-router-dom';
 
 const CTA = () => {
   return (
@@ -14,13 +15,19 @@ const CTA = () => {
           </p>
         </div>
         
-        <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-6">
           <Input 
             type="email" 
             placeholder="Enter your email" 
             className="flex-1"
           />
           <Button type="submit">Get Early Access</Button>
+        </div>
+        
+        <div className="text-center mt-4">
+          <Link to="/dashboard">
+            <Button variant="outline">Try Dashboard Demo</Button>
+          </Link>
         </div>
         
         <div className="mt-8 text-center text-sm text-muted-foreground">
