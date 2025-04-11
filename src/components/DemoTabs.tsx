@@ -9,9 +9,9 @@ const DemoTabs = () => {
   return (
     <Tabs defaultValue="airtable" className="w-full">
       <TabsList className="grid w-full md:w-auto grid-cols-3 mb-8">
-        <TabsTrigger value="airtable">Airtable View</TabsTrigger>
-        <TabsTrigger value="excel">Excel Output</TabsTrigger>
-        <TabsTrigger value="comparison">Side by Side</TabsTrigger>
+        <TabsTrigger value="airtable">Data Source (Airtable)</TabsTrigger>
+        <TabsTrigger value="excel">Excel Formula Integration</TabsTrigger>
+        <TabsTrigger value="comparison">Live Use Cases</TabsTrigger>
       </TabsList>
       
       <TabsContent value="airtable" className="mt-0">

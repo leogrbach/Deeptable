@@ -7,110 +7,110 @@ const ComparisonView = () => {
     <div className="space-y-6">
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle>Side by Side Comparison</CardTitle>
+          <CardTitle>Real-World Use Cases</CardTitle>
           <CardDescription>
-            See the difference between standard Airtable exports and DeepTable enhanced exports
+            See how DeepTable bridges the gap between Airtable's collaborative database and Excel's calculation power
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <div className="text-lg font-medium text-center mb-4">Standard Export</div>
-              <div className="rounded-md border overflow-hidden">
-                <div className="bg-muted py-2 px-4 text-center text-sm border-b">CSV Export</div>
-                <div className="p-4 bg-white">
-                  <pre className="text-xs overflow-auto p-2 bg-gray-50 rounded border">
-                    {`Project,Status,Budget,Progress
-Website Redesign,In Progress,$12500,65%
-Marketing Campaign,Planning,$5000,10%
-Product Launch,On Hold,$25000,30%`}
-                  </pre>
-                </div>
+            <div className="space-y-4">
+              <div className="text-lg font-medium">Without DeepTable</div>
+              <div className="rounded-md border overflow-hidden p-4">
+                <ul className="space-y-4">
+                  <li className="flex items-start">
+                    <span className="mr-2 text-red-500">❌</span>
+                    <div>
+                      <p className="font-medium">Manual Export/Import</p>
+                      <p className="text-sm text-muted-foreground">Export Airtable data to CSV, then import to Excel, repeating whenever data changes</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-red-500">❌</span>
+                    <div>
+                      <p className="font-medium">Limited Formula Support</p>
+                      <p className="text-sm text-muted-foreground">Airtable formulas lack many Excel functions like XLOOKUP, nested IFs, and array formulas</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-red-500">❌</span>
+                    <div>
+                      <p className="font-medium">Data Synchronization Issues</p>
+                      <p className="text-sm text-muted-foreground">Reports quickly become outdated as Airtable data changes</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-red-500">❌</span>
+                    <div>
+                      <p className="font-medium">Complex Custom Development</p>
+                      <p className="text-sm text-muted-foreground">Requires API development and scripting to maintain live connections</p>
+                    </div>
+                  </li>
+                </ul>
               </div>
-              <ul className="text-sm text-muted-foreground space-y-1">
-                <li className="flex items-start">
-                  <span className="mr-2">❌</span>
-                  <span>Loses all formatting</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-2">❌</span>
-                  <span>No formulas preserved</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-2">❌</span>
-                  <span>Basic text only</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-2">❌</span>
-                  <span>No visual elements</span>
-                </li>
-              </ul>
             </div>
             
-            <div className="space-y-2">
-              <div className="text-lg font-medium text-center mb-4">DeepTable Export</div>
-              <div className="rounded-md border overflow-hidden">
-                <div className="bg-muted py-2 px-4 text-center text-sm border-b">Excel Export</div>
-                <div className="p-4 bg-white">
-                  <div className="rounded border overflow-hidden shadow-sm">
-                    <div className="bg-[#217346] text-white px-2 py-1 text-xs">Excel</div>
-                    <table className="w-full text-xs">
-                      <tbody>
-                        <tr className="bg-gray-50 border-b">
-                          <td className="px-2 py-1 border-r font-medium">Project</td>
-                          <td className="px-2 py-1 border-r font-medium">Status</td>
-                          <td className="px-2 py-1 border-r font-medium">Budget</td>
-                          <td className="px-2 py-1 border-r font-medium">Progress</td>
-                          <td className="px-2 py-1 font-medium">Remaining</td>
-                        </tr>
-                        <tr className="border-b">
-                          <td className="px-2 py-1 border-r">Website Redesign</td>
-                          <td className="px-2 py-1 border-r">
-                            <span className="bg-green-100 text-green-800 px-1 rounded text-center block text-xs">In Progress</span>
-                          </td>
-                          <td className="px-2 py-1 border-r text-right">$12,500.00</td>
-                          <td className="px-2 py-1 border-r">65%</td>
-                          <td className="px-2 py-1 text-right text-blue-600">$4,375.00</td>
-                        </tr>
-                        <tr>
-                          <td className="px-2 py-1 border-r" colSpan={4}>
-                            <span className="text-gray-500 italic">Formula cells show calculated values</span>
-                          </td>
-                          <td className="px-2 py-1 text-xs text-gray-500">
-                            =B2*(1-D2)
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+            <div className="space-y-4">
+              <div className="text-lg font-medium">With DeepTable</div>
+              <div className="rounded-md border overflow-hidden p-4">
+                <ul className="space-y-4">
+                  <li className="flex items-start">
+                    <span className="mr-2 text-green-500">✅</span>
+                    <div>
+                      <p className="font-medium">Live Data Connection</p>
+                      <p className="text-sm text-muted-foreground">Direct, real-time access to Airtable data in an Excel-like interface</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-green-500">✅</span>
+                    <div>
+                      <p className="font-medium">Full Excel Formula Library</p>
+                      <p className="text-sm text-muted-foreground">Access to XLOOKUP, SUMIFS, INDEX/MATCH, and all Excel functions</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-green-500">✅</span>
+                    <div>
+                      <p className="font-medium">Automatic Synchronization</p>
+                      <p className="text-sm text-muted-foreground">Formulas automatically update when Airtable data changes</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-2 text-green-500">✅</span>
+                    <div>
+                      <p className="font-medium">No-Code Solution</p>
+                      <p className="text-sm text-muted-foreground">Simple setup with no API knowledge or development required</p>
+                    </div>
+                  </li>
+                </ul>
               </div>
-              <ul className="text-sm text-muted-foreground space-y-1">
-                <li className="flex items-start">
-                  <span className="mr-2">✅</span>
-                  <span>Preserves all formatting</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-2">✅</span>
-                  <span>Excel formulas work perfectly</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-2">✅</span>
-                  <span>Cell styles and number formats</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-2">✅</span>
-                  <span>Charts and visual elements</span>
-                </li>
-              </ul>
+            </div>
+          </div>
+          
+          <div className="mt-8 space-y-4">
+            <h3 className="text-lg font-medium">Popular Use Cases</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-medium mb-2">Financial Reporting</h4>
+                <p className="text-sm text-muted-foreground">Create complex financial reports with advanced Excel formulas while keeping data in Airtable for team collaboration.</p>
+              </div>
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-medium mb-2">Inventory Management</h4>
+                <p className="text-sm text-muted-foreground">Use XLOOKUP and conditional formulas to create dynamic inventory reports from your Airtable inventory system.</p>
+              </div>
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-medium mb-2">Project Forecasting</h4>
+                <p className="text-sm text-muted-foreground">Build sophisticated forecasting models with Excel while pulling live project data from Airtable workspaces.</p>
+              </div>
             </div>
           </div>
         </CardContent>
       </Card>
       
-      <div className="bg-muted p-4 rounded-lg text-center">
-        <p className="font-medium mb-2">Why choose DeepTable for your Airtable exports?</p>
-        <p className="text-muted-foreground">DeepTable bridges the gap between Airtable's collaborative features and Excel's powerful data analysis capabilities.</p>
+      <div className="bg-muted p-6 rounded-lg text-center">
+        <p className="font-medium mb-2 text-lg">Ready to bring Excel power to your Airtable data?</p>
+        <p className="text-muted-foreground mb-4">DeepTable gives you the best of both worlds - Airtable's collaboration with Excel's calculation power.</p>
+        <button className="bg-primary text-primary-foreground hover:bg-primary/90 py-2 px-4 rounded">Start Free Trial</button>
       </div>
     </div>
   );
