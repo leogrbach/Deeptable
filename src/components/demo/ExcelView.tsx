@@ -42,7 +42,7 @@ const ExcelView = () => {
                       <div><span className="font-mono text-blue-600">=XLOOKUP("P003", SalesData[Product ID], SalesData[Price])</span> → Returns price for Product ID P003</div>
                       <div><span className="font-mono text-blue-600">=COUNTIFS(SalesData[Category], "Electronics")</span> → Counts products in Electronics category</div>
                       <div><span className="font-mono text-blue-600">=SUMIFS(SalesData[Price], SalesData[Category], "Electronics")</span> → Sum of prices for Electronics</div>
-                      <div><span className="font-mono text-blue-600">=AVERAGEIF(SalesData[Stock], ">50")</span> → Average stock for items with more than 50 units</div>
+                      <div><span className="font-mono text-blue-600">=AVERAGEIF(SalesData[Stock], "&gt;50")</span> → Average stock for items with more than 50 units</div>
                     </div>
                   </div>
                   
