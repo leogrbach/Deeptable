@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Loader2, Play } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -10,7 +11,14 @@ const Hero = () => {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { toast } = useToast();
+
+  // Check localStorage on component mount
+  useEffect(() => {
+    const userEmail = localStorage.getItem('userEmail');
+    setIsLoggedIn(!!userEmail);
+  }, []);
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -36,6 +44,10 @@ const Hero = () => {
       // In a real app, this would be an actual API request
       await new Promise(resolve => setTimeout(resolve, 1500));
       
+      // Store email in localStorage to mark user as "signed up"
+      localStorage.setItem('userEmail', email);
+      setIsLoggedIn(true);
+      
       toast({
         title: "Success!",
         description: "Thank you for joining our early access list. We'll be in touch soon!",
@@ -43,6 +55,9 @@ const Hero = () => {
       
       setEmail('');
       setOpen(false);
+      
+      // Refresh page to update header state
+      window.location.reload();
     } catch (error) {
       toast({
         title: "Something went wrong",
@@ -63,14 +78,22 @@ const Hero = () => {
               Transform Airtable Data into Beautiful Excel Spreadsheets
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-[800px] mx-auto">
-              The only Airtable extension that exports your data with full Excel fidelity—preserving formulas, formatting, and structure in one click.
+              The only Airtable extension that lets you use Excel formulas directly on your Airtable data—preserving all the powerful calculation capabilities you love.
             </p>
           </div>
           
           <div className="flex flex-col sm:flex-row items-center gap-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <Button size="lg" className="w-full sm:w-auto" onClick={() => setOpen(true)}>
-              Get Early Access <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            {isLoggedIn ? (
+              <Link to="/dashboard">
+                <Button size="lg" className="w-full sm:w-auto">
+                  Go to Dashboard <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            ) : (
+              <Button size="lg" className="w-full sm:w-auto" onClick={() => setOpen(true)}>
+                Get Early Access <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            )}
             <Link to="/demo">
               <Button size="lg" variant="outline" className="w-full sm:w-auto">
                 <Play className="mr-2 h-4 w-4" /> Watch Demo
@@ -85,7 +108,7 @@ const Hero = () => {
                 <div className="rounded-full h-3 w-3 bg-yellow-500"></div>
                 <div className="rounded-full h-3 w-3 bg-green-500"></div>
               </div>
-              <div className="mx-auto text-xs text-muted-foreground">Airtable Extension</div>
+              <div className="mx-auto text-xs text-muted-foreground">DeepTable Extension</div>
             </div>
             <div className="p-4">
               <img 
@@ -103,11 +126,11 @@ const Hero = () => {
             </div>
             <div className="flex items-center gap-2">
               <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-              <span className="text-sm text-muted-foreground">Preserves all formatting</span>
+              <span className="text-sm text-muted-foreground">Use Excel formulas directly</span>
             </div>
             <div className="flex items-center gap-2">
               <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-              <span className="text-sm text-muted-foreground">One-click export</span>
+              <span className="text-sm text-muted-foreground">Live data connection</span>
             </div>
             <div className="flex items-center gap-2">
               <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
@@ -120,7 +143,7 @@ const Hero = () => {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Get Early Access</DialogTitle>
+            <DialogTitle>Get Early Access to DeepTable</DialogTitle>
             <DialogDescription>
               Join our early access program and be among the first to experience the power of DeepTable.
             </DialogDescription>
@@ -155,7 +178,7 @@ const Hero = () => {
             </DialogFooter>
           </form>
           <p className="text-xs text-center text-muted-foreground mt-2">
-            By signing up, you agree to our Terms of Service and Privacy Policy.
+            By signing up, you agree to our Terms of Service and Privacy Policy. Launching Q3 2025.
           </p>
         </DialogContent>
       </Dialog>

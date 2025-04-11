@@ -35,12 +35,18 @@ const CTA = () => {
       // In a real app, this would be an actual API request
       await new Promise(resolve => setTimeout(resolve, 1500));
       
+      // Store email in localStorage to mark user as "signed up"
+      localStorage.setItem('userEmail', email);
+      
       toast({
         title: "Success!",
         description: "Thank you for joining our early access list. We'll be in touch soon!",
       });
       
       setEmail('');
+      
+      // Refresh page to update header state
+      window.location.reload();
     } catch (error) {
       toast({
         title: "Something went wrong",
@@ -95,7 +101,7 @@ const CTA = () => {
         
         <div className="mt-8 text-center text-sm text-muted-foreground">
           <p>By signing up, you agree to our Terms of Service and Privacy Policy.</p>
-          <p className="mt-4">🚀 Launching Q2 2023 - Limited spots available!</p>
+          <p className="mt-4">🚀 Launching Q3 2025 - Limited spots available!</p>
         </div>
       </div>
     </section>

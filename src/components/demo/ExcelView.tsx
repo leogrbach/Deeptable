@@ -1,13 +1,16 @@
 
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 const ExcelView = () => {
   return (
     <div className="space-y-6">
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle>Excel Formula Integration</CardTitle>
+          <CardTitle>DeepTable Excel Formula Integration</CardTitle>
           <CardDescription>
             Use familiar Excel functions like XLOOKUP, COUNTIFS, and SUMIFS directly on your Airtable data
           </CardDescription>
@@ -89,11 +92,21 @@ const ExcelView = () => {
               </div>
             </div>
           </div>
+          
+          <div className="mt-6 flex justify-center">
+            <Link to="/dashboard">
+              <Button className="gap-2">
+                Try Interactive Dashboard
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
         </CardContent>
       </Card>
       
       <div className="text-center text-muted-foreground">
         <p>DeepTable brings Excel's powerful formula capabilities to your Airtable data, enabling advanced analysis without requiring data exports or manual updates.</p>
+        <p className="mt-2">Launching Q3 2025 - Join our early access program today!</p>
       </div>
     </div>
   );
