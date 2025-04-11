@@ -1,10 +1,10 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Loader2 } from 'lucide-react';
+import { ArrowRight, Loader2, Play } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const [open, setOpen] = useState(false);
@@ -71,9 +71,11 @@ const Hero = () => {
             <Button size="lg" className="w-full sm:w-auto" onClick={() => setOpen(true)}>
               Get Early Access <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button size="lg" variant="outline" className="w-full sm:w-auto">
-              Watch Demo
-            </Button>
+            <Link to="/demo">
+              <Button size="lg" variant="outline" className="w-full sm:w-auto">
+                <Play className="mr-2 h-4 w-4" /> Watch Demo
+              </Button>
+            </Link>
           </div>
           
           <div className="w-full max-w-5xl mx-auto rounded-lg border border-border overflow-hidden shadow-lg bg-card animate-slide-up" style={{ animationDelay: '0.4s' }}>
@@ -115,7 +117,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Email signup dialog */}
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
